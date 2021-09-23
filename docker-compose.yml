@@ -30,8 +30,8 @@ services:
         tty: true
         volumes:
             - ./grafana/data:/var/lib/grafana
-            # - ./grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
-            # - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+            - ./grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+            - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
         env_file:
             - ./grafana/config
         ports:
