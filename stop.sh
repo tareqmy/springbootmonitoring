@@ -1,3 +1,3 @@
 source .env
 echo "Stopping existing containers..."
-docker stop $GRAFANA $PROMETHEUS
+docker stop $CADDY $GRAFANA $PROMETHEUS

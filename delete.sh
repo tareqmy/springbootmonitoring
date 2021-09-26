@@ -1,3 +1,3 @@
 source .env
 echo "Delete existing containers..."
-docker rm -f $GRAFANA $PROMETHEUS
+docker rm -f $CADDY $GRAFANA $PROMETHEUS

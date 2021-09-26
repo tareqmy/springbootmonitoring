@@ -9,7 +9,11 @@ then
         exit 0;
     elif [ "$1" == "gr" ]; then
         echo "logs for $GRAFANA"
-        ddocker logs -f $GRAFANA
+        docker logs -f $GRAFANA
+        exit 0;
+    elif [ "$1" == "cd" ]; then
+        echo "logs for $CADDY"
+        docker logs -f $CADDY
         exit 0;
     fi
 fi

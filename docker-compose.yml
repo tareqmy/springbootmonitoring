@@ -11,8 +11,8 @@ services:
         volumes:
             - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
             - ./prometheus/data:/prometheus
-        ports:
-            - "9090:9090"
+        expose:
+            - 9090
         command:
             - '--config.file=/etc/prometheus/prometheus.yml'
             - '--storage.tsdb.path=/prometheus'
@@ -34,5 +34,20 @@ services:
             - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
         env_file:
             - ./grafana/config
+        expose:
+            - 3000
+    caddy:
+        image: caddy:latest
+        container_name: ${CADDY}
+        hostname: ${CADDY}
+        restart: unless-stopped
+        stdin_open: true
+        tty: true
+        volumes:
+            - ./caddy/etc:/etc/caddy
+            - ./caddy/data:/data
+        env_file:
+            - ./caddy/config
         ports:
+            - "9090:9090"
             - "3000:3000"

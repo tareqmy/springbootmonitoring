@@ -11,6 +11,10 @@ then
         echo "shell for $GRAFANA"
         docker exec -it $GRAFANA /bin/bash
         exit 0;
+    elif [ "$1" == "cd" ]; then
+        echo "shell for $CADDY"
+        docker exec -it $CADDY /bin/sh
+        exit 0;
     fi
 fi
 echo "shell for $GRAFANA"
