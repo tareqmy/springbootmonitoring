@@ -15,6 +15,10 @@ then
         echo "logs for $CADDY"
         docker logs -f $CADDY
         exit 0;
+    elif [ "$1" == "ne" ]; then
+        echo "logs for $NODEEXPORTER"
+        docker logs -f $NODEEXPORTER
+        exit 0;
     fi
 fi
 echo "logs for $GRAFANA"

@@ -1,3 +1,3 @@
 source .env
 echo "Starting existing containers..."
-docker start $CADDY $GRAFANA $PROMETHEUS
+docker start $NODEEXPORTER $CADDY $GRAFANA $PROMETHEUS

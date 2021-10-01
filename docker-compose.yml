@@ -21,6 +21,24 @@ services:
             - '--storage.tsdb.retention.time=200h'
             - '--web.enable-admin-api'
             - '--web.enable-lifecycle'
+    nodeexporter:
+        image: prom/node-exporter:latest
+        container_name: ${NODEEXPORTER}
+        hostname: ${NODEEXPORTER}
+        restart: unless-stopped
+        stdin_open: true
+        tty: true
+        volumes:
+            - /proc:/host/proc:ro
+            - /sys:/host/sys:ro
+            - /:/rootfs:ro
+        expose:
+            - 9100
+        command:
+            - '--path.procfs=/host/proc'
+            - '--path.rootfs=/rootfs'
+            - '--path.sysfs=/host/sys'
+            - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
     grafana:
         image: grafana/grafana:latest
         container_name: ${GRAFANA}
@@ -32,6 +50,7 @@ services:
             - ./grafana/data:/var/lib/grafana
             - ./grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
             - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+            - ./grafana/grafana.ini:/etc/grafana/grafana.ini
         env_file:
             - ./grafana/config
         expose:

@@ -1,3 +1,3 @@
 source .env
 echo "Stopping existing containers..."
-docker stop $CADDY $GRAFANA $PROMETHEUS
+docker stop $NODEEXPORTER $CADDY $GRAFANA $PROMETHEUS
