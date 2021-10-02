@@ -19,6 +19,10 @@ then
         echo "shell for $NODEEXPORTER"
         docker exec -it $NODEEXPORTER /bin/sh
         exit 0;
+    elif [ "$1" == "ca" ]; then
+        echo "shell for $CADVISOR"
+        docker exec -it $CADVISOR /bin/sh
+        exit 0;
     fi
 fi
 echo "shell for $GRAFANA"

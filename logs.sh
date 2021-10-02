@@ -19,6 +19,10 @@ then
         echo "logs for $NODEEXPORTER"
         docker logs -f $NODEEXPORTER
         exit 0;
+    elif [ "$1" == "ca" ]; then
+        echo "logs for $CADVISOR"
+        docker logs -f $CADVISOR
+        exit 0;
     fi
 fi
 echo "logs for $GRAFANA"
