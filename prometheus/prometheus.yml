@@ -31,10 +31,10 @@ scrape_configs:
         scrape_interval: 5s
         static_configs:
             -   targets: ['cadvisor:8080']
-    -   job_name: "ironfly"
-        metrics_path: /actuator/prometheus/
+    -   job_name: "springbootapp"
+        metrics_path: /api/actuator/prometheus/
         basic_auth:
-            username: system@ironfly.com
+            username: system
             password: system
         static_configs:
             -   targets: [ "host.docker.internal:8080" ]
